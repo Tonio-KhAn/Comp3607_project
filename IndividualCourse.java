@@ -17,4 +17,16 @@ public class IndividualCourse {
 
     }
 
+    public boolean inSemester(String s) {
+        return this.semester.equals(s);
+    }
+
+    @Override
+    public String toString() {
+        String text;
+        text = courseCode + "\n" + courseName + "\nSEMESTER" + semester + "\nPRE-REQUISITES: " + prerequisits
+                + "\nCOURSE DESCRIPTION \n" + description;
+        return text;
+    }
+
 }

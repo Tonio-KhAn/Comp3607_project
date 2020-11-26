@@ -17,19 +17,40 @@ public class InformationTechnology implements Degree {
         coreCourses.addCourse(newcourse);
     }
 
-    public CourseList getElectives() {
+    public CourseList getElectives(String s) {
+        CourseList temp = new CourseList();
+        for (int x = 0; x < electiveCourses.getSize(); x = x + 1) {
+            if (electiveCourses.get(x).inSemester(s)) {
+                temp.addCourse(electiveCourses.get(x));
+            }
+        }
+        return temp;
 
     }
 
-    public CourseList getCore() {
+    public CourseList getCore(String s) {
+        CourseList temp = new CourseList();
+        for (int x = 0; x < coreCourses.getSize(); x = x + 1) {
+            if (coreCourses.get(x).inSemester(s)) {
+                temp.addCourse(coreCourses.get(x));
+            }
+        }
+        return temp;
     }
 
-    public CourseList getFoundations() {
+    public CourseList getFoundations(String s) {
+        CourseList temp = new CourseList();
+        for (int x = 0; x < foundationCourses.getSize(); x = x + 1) {
+            if (foundationCourses.get(x).inSemester(s)) {
+                temp.addCourse(foundationCourses.get(x));
+            }
+        }
+        return temp;
 
     }
 
-    public newCourse(){
-
+    public Boolean compare(String name) {
+        return this.degreeName.equals(name);
     }
 
 }

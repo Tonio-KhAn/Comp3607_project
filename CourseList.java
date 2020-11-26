@@ -6,4 +6,12 @@ public class CourseList {
     public void addCourse(IndividualCourse c) {
         courses.add(c);
     }
+
+    public IndividualCourse get(int x) {
+        return courses.get(x);
+    }
+
+    public int getSize() {
+        return courses.size();
+    }
 }
