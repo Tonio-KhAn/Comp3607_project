@@ -3,12 +3,12 @@ import java.util.*;
 public class System {
     private Degree currentDegree;
     private ArrayList<Degree> degrees;
-
+    private GetCourses getCourses;
 
     public String requestRecommendation(String studentID, String semester){
        setStudent(studentID);
        setDegree(currentStudent.getDegree);
-       getCourses();
+       getCourses.execute(semester,currentStudent,currentDegree);
        
         }
 

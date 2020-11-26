@@ -6,19 +6,39 @@ public class IndividualCourse {
     private String semester;
     private String description;
     private String courseCode;
+    private int year;
 
     public IndividualCourse(String name, ArrayList<String> prerequisits, String semester, String description,
-            String courseCode) {
+            String courseCode, int year) {
         this.courseName = name;
         this.prerequisits = prerequisits;
         this.semester = semester;
         this.description = description;
         this.courseCode = courseCode;
+        this.year = year;
 
     }
 
     public boolean inSemester(String s) {
         return this.semester.equals(s);
+    }
+
+    public boolean inYear(int year) {
+        if (this.year == year) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasPrerequisits(ArrayList<String> passedCourses) {
+        for (int x = 0; x < prerequisits.size(); X = x + 1) {
+            for (int y = 0; y < passedCourses.size(); y = y + 1) {
+                if (passedCourses.get(y).equals(prerequisits.get(x))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override

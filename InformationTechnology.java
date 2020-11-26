@@ -13,14 +13,15 @@ public class InformationTechnology implements Degree {
         String code = "COMP 1600";
         ArrayList<String> prereq = new ArrayList<String>();
         prereq.add("none");
-        IndividualCourse newcourse = new IndividualCourse(courseName, prereq, sem, description, code);
+        int year = 1;
+        IndividualCourse newcourse = new IndividualCourse(courseName, prereq, sem, description, code, year);
         coreCourses.addCourse(newcourse);
     }
 
-    public CourseList getElectives(String s) {
+    public CourseList getElectives(String s, int year) {
         CourseList temp = new CourseList();
         for (int x = 0; x < electiveCourses.getSize(); x = x + 1) {
-            if (electiveCourses.get(x).inSemester(s)) {
+            if (electiveCourses.get(x).inSemester(s) && electiveCourses.get(x).inYear(year)) {
                 temp.addCourse(electiveCourses.get(x));
             }
         }
@@ -28,20 +29,20 @@ public class InformationTechnology implements Degree {
 
     }
 
-    public CourseList getCore(String s) {
+    public CourseList getCore(String s, int year) {
         CourseList temp = new CourseList();
         for (int x = 0; x < coreCourses.getSize(); x = x + 1) {
-            if (coreCourses.get(x).inSemester(s)) {
+            if (coreCourses.get(x).inSemester(s) && electiveCourses.get(x).inYear(year)) {
                 temp.addCourse(coreCourses.get(x));
             }
         }
         return temp;
     }
 
-    public CourseList getFoundations(String s) {
+    public CourseList getFoundations(String s, int year) {
         CourseList temp = new CourseList();
         for (int x = 0; x < foundationCourses.getSize(); x = x + 1) {
-            if (foundationCourses.get(x).inSemester(s)) {
+            if (foundationCourses.get(x).inSemester(s) && electiveCourses.get(x).inYear(year)) {
                 temp.addCourse(foundationCourses.get(x));
             }
         }
