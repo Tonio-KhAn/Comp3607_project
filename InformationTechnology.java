@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class InformationTechnology implements Degree {
     private CourseList electiveCourses;
@@ -7,15 +8,28 @@ public class InformationTechnology implements Degree {
     private String degreeName;
 
     public InformationTechnology() {
-        String courseName = "Introduction to Computing Concepts";
-        String sem = "1";
-        String description = "This course presents an overview of computing technology and the field of computer science. Discussion topics will include the organisation of modern computers, operating systems, algorithms, programming languages and database systems.";
-        String code = "COMP 1600";
-        ArrayList<String> prereq = new ArrayList<String>();
-        prereq.add("none");
-        int year = 1;
-        IndividualCourse newcourse = new IndividualCourse(courseName, prereq, sem, description, code, year);
-        coreCourses.addCourse(newcourse);
+        try {
+            File compFile = new File("InformationTechnologySpecialCourses.txt");
+            Scanner input = new Scanner(compFile);
+            input.useDelimiter("?");
+
+            while (input.hasNext()) {
+                String courseName = input.next();
+                String semester = input.next();
+                String description = input.next();
+                String courseCode = input.next();
+                int year = input.nextInt();
+                ArrayList<String> prereq = new ArrayList<String>();
+                prereq.add(input.next());
+                IndividualCourse newcourse = new IndividualCourse(courseName, prereq, semester, description, courseCode,
+                        year);
+                coreCourses.addCourse(newcourse);
+            }
+            input.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+
     }
 
     public CourseList getElectives(String s, int year) {
@@ -50,7 +64,7 @@ public class InformationTechnology implements Degree {
 
     }
 
-    public Boolean compare(String name) {
+    public boolean compare(String name) {
         return this.degreeName.equals(name);
     }
 

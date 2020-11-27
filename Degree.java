@@ -5,6 +5,6 @@ public interface Degree {
 
     public abstract CourseList getFoundations(String s, int year);
 
-    public abstract Boolean compare(String s);
+    public abstract boolean compare(String s);
 
 }

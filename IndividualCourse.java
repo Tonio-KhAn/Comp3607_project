@@ -20,17 +20,23 @@ public class IndividualCourse {
     }
 
     public boolean inSemester(String s) {
+        if (this.semester.equals("1 and 2")) {
+            return true;
+        }
         return this.semester.equals(s);
     }
 
     public boolean inYear(int year) {
-        if (this.year == year) {
+        if (this.year <= year) {
             return true;
         }
         return false;
     }
 
     public boolean hasPrerequisits(ArrayList<String> passedCourses) {
+        if (prerequisits.get(0).equals("none")) {
+            return true;
+        }
         for (int x = 0; x < prerequisits.size(); X = x + 1) {
             for (int y = 0; y < passedCourses.size(); y = y + 1) {
                 if (passedCourses.get(y).equals(prerequisits.get(x))) {
@@ -39,6 +45,14 @@ public class IndividualCourse {
             }
         }
         return false;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public String courseToString() {
+        return courseCode + "  " + courseName;
     }
 
     @Override
