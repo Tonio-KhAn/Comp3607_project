@@ -8,8 +8,14 @@ public class System {
     private StudentList studentList;
 
     public System() {
-        Degree infotech = new InformationTechnology();
+        degrees = new ArrayList<Degree>();
+        Degree infotech = new Degree("ITCore", "ITElec", "Foundation", "B.Sc. Information Technology (Special)");
         degrees.add(infotech);
+        Degree compsci = new Degree("COMPCore", "COMPElec", "Foundation", "B.Sc. Computer Science (Special)");
+        degrees.add(compsci);
+        studentList = new StudentList("StudentList");
+        getCourses = new GetCourses();
+
     }
 
     public String requestRecommendation(String studentID, String semester) {

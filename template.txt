@@ -1,0 +1,5 @@
+CourseName?Semester?Description?CourseCode?Prequisite1?Prequisite2?$?Year?
+
+
+NB. If no prequisites put NONE
+    If 1 prequisite put Prequisite1?$?

@@ -2,18 +2,19 @@ import java.util.*;
 
 public class IndividualStudent {
     private String studentID;
+    private String studentName:
     private int studentYear;
-    private String studentSemester;
     private String degree;
     private ArrayList<String> passedCourses;
     private double gpa;
     private String recommendedCourses;
 
-    public IndividualStudent(String studentID, int studentYear, String studentSemester, String degree, double gpa) {
+    public IndividualStudent(String studentID, String studentName, int studentYear, ArrayList<String> passedCourses,
+            String degree, double gpa) {
         this.studentID = studentID;
+        this.studentName = studentName;
         this.studentYear = studentYear;
-        this.studentSemester = studentSemester;
-        this.passedCourses = new ArrayList<>();
+        this.passedCourses = passedCourses;
         this.recommendedCourses = "";
         this.gpa = gpa;
         this.degree = degree;
@@ -41,10 +42,6 @@ public class IndividualStudent {
 
     public int getStudentYear() {
         return this.studentYear;
-    }
-
-    public String getStudentSemester() {
-        return this.studentSemester;
     }
 
     public boolean compare(String id) {
