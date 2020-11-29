@@ -1,0 +1,5 @@
+StudentID?StudentName?Year?passedcourse1?passsedcourse2?passedcourse3?$?DegreeName?gpa?
+
+Degree name should be exactly like this because code uses compare to ensure it is equal
+B.Sc. Information Technology (Special)
+B.Sc. Computer Science (Special)

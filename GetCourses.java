@@ -6,10 +6,21 @@ public class GetCourses {
     private CourseList foundation;
     private Recomender recomender;
 
+    public GetCourses() {
+        this.electives = new CourseList();
+        this.core = new CourseList();
+        this.foundation = new CourseList();
+        this.recomender = new Recomender();
+    }
+
     public IndividualStudent execute(String semester, IndividualStudent student, Degree currentDegree) {
         getCoursesInSemester(currentDegree, semester, student.getStudentYear());
         getLegibleCourses(student.getPassedCourses());
-        getAllCoursesToDo(student.getPassedCourses())
+        getAllCoursesToDo(student.getPassedCourses());
+        java.lang.System.out.println(this.core);
+        java.lang.System.out.println(this.electives);
+        java.lang.System.out.println(this.foundation);
+
         return recomender.execute(this.core, this.electives, this.foundation, student);
     }
 
@@ -43,12 +54,18 @@ public class GetCourses {
 
     public CourseList getCoursesToDo(ArrayList<String> passedCourses, CourseList list) {
         CourseList temp = new CourseList();
+        boolean check = false;
         for (int x = 0; x < list.getSize(); x = x + 1) {
             for (int y = 0; y < passedCourses.size(); y = y + 1) {
                 if (passedCourses.get(y).equals(list.get(x).getCourseCode())) {
-                    temp.addCourse(list.get(x));
+                    check = true;
                 }
             }
+            if (!check) {
+                temp.addCourse(list.get(x));
+
+            }
+            check = false;
         }
         return temp;
     }

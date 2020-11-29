@@ -27,15 +27,17 @@ public class StudentList {
         try {
             File compFile = new File(name + ".txt");
             Scanner input = new Scanner(compFile);
-            input.useDelimiter("?");
+            input.useDelimiter("\\?");
 
             while (input.hasNext()) {
                 String studentID = input.next();
                 String studentName = input.next();
                 int studentYear = input.nextInt();
                 ArrayList<String> passed = new ArrayList<String>();
-                while (!input.next().equals("$")) {
-                    passed.add(input.next());
+                String tempPassed = input.next();
+                while (!tempPassed.equals("$")) {
+                    passed.add(tempPassed);
+                    tempPassed = input.next();
                 }
                 String degree = input.next();
                 double gpa = input.nextDouble();
@@ -44,8 +46,16 @@ public class StudentList {
             }
             input.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            int a = 0;
         }
+    }
+
+    public String toString() {
+        String text = "";
+        for (int x = 0; x < students.size(); x = x + 1) {
+            text = text + students.get(x).getDegree() + "\n";
+        }
+        return text;
     }
 
 }

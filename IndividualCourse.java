@@ -33,11 +33,11 @@ public class IndividualCourse {
         return false;
     }
 
-    public boolean hasPrerequisits(ArrayList<String> passedCourses) {
+    public boolean hasPrerequisits(List<String> passedCourses) {
         if (prerequisits.get(0).equals("none")) {
             return true;
         }
-        for (int x = 0; x < prerequisits.size(); X = x + 1) {
+        for (int x = 0; x < prerequisits.size(); x = x + 1) {
             for (int y = 0; y < passedCourses.size(); y = y + 1) {
                 if (passedCourses.get(y).equals(prerequisits.get(x))) {
                     return true;

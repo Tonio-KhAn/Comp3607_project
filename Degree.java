@@ -14,6 +14,10 @@ public class Degree {
         this.foundationCourses = courseAdder(foundation);
     }
 
+    public CourseList sendcore() {
+        return this.coreCourses;
+    }
+
     public CourseList getElectives(String s, int year) {
         CourseList temp = new CourseList();
         for (int x = 0; x < electiveCourses.getSize(); x = x + 1) {
@@ -27,8 +31,9 @@ public class Degree {
 
     public CourseList getCore(String s, int year) {
         CourseList temp = new CourseList();
+
         for (int x = 0; x < coreCourses.getSize(); x = x + 1) {
-            if (coreCourses.get(x).inSemester(s) && electiveCourses.get(x).inYear(year)) {
+            if (coreCourses.get(x).inSemester(s) && coreCourses.get(x).inYear(year)) {
                 temp.addCourse(coreCourses.get(x));
             }
         }
@@ -38,7 +43,7 @@ public class Degree {
     public CourseList getFoundations(String s, int year) {
         CourseList temp = new CourseList();
         for (int x = 0; x < foundationCourses.getSize(); x = x + 1) {
-            if (foundationCourses.get(x).inSemester(s) && electiveCourses.get(x).inYear(year)) {
+            if (foundationCourses.get(x).inSemester(s)) {
                 temp.addCourse(foundationCourses.get(x));
             }
         }
@@ -56,16 +61,19 @@ public class Degree {
         try {
             File compFile = new File(name + ".txt");
             Scanner input = new Scanner(compFile);
-            input.useDelimiter("?");
+            input.useDelimiter("\\?");
 
             while (input.hasNext()) {
+                input.next();
                 String courseName = input.next();
                 String semester = input.next();
                 String description = input.next();
                 String courseCode = input.next();
                 ArrayList<String> prereq = new ArrayList<String>();
-                while (!input.next().equals("$")) {
-                    prereq.add(input.next());
+                String tempPrereq = input.next();
+                while (!tempPrereq.equals("$")) {
+                    prereq.add(tempPrereq);
+                    tempPrereq = input.next();
                 }
                 int year = input.nextInt();
                 newcourse = new IndividualCourse(courseName, prereq, semester, description, courseCode, year);
@@ -73,9 +81,13 @@ public class Degree {
             }
             input.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            return temp;
         }
         return temp;
+    }
+
+    public String teString() {
+        return degreeName;
     }
 
 }

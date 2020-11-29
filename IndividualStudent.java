@@ -2,7 +2,7 @@ import java.util.*;
 
 public class IndividualStudent {
     private String studentID;
-    private String studentName:
+    private String studentName;
     private int studentYear;
     private String degree;
     private ArrayList<String> passedCourses;
@@ -50,5 +50,9 @@ public class IndividualStudent {
 
     public ArrayList<String> getPassedCourses() {
         return passedCourses;
+    }
+
+    public String toString() {
+        return this.studentID;
     }
 }

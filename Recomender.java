@@ -7,6 +7,7 @@ public class Recomender {
         recommendation = recommendation + coreToString(core);
         recommendation = recommendation + electiveToString(student.getGpa(), elective, core, foundation);
         student.setRecommendedCourses(recommendation);
+        java.lang.System.out.println(student);
         return student;
     }
 

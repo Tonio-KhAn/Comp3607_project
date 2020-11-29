@@ -22,7 +22,7 @@ public class CourseList {
     public String toString() {
         String text = "";
         for (int x = 0; x < courses.size(); x = x + 1) {
-            text = text + courses.get(x).courseToString() + "\n";
+            text = text + courses.get(x).toString() + "\n";
         }
         return text;
     }

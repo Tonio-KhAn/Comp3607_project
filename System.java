@@ -9,28 +9,34 @@ public class System {
 
     public System() {
         degrees = new ArrayList<Degree>();
-        Degree infotech = new Degree("ITCore", "ITElec", "Foundation", "B.Sc. Information Technology (Special)");
+        Degree infotech = new Degree("ITcore", "ITelective", "Foun", "B.Sc. Information Technology (Special)");
         degrees.add(infotech);
-        Degree compsci = new Degree("COMPCore", "COMPElec", "Foundation", "B.Sc. Computer Science (Special)");
+        Degree compsci = new Degree("CSCore", "CSelective", "Foun", "B.Sc. Computer Science (Special)");
         degrees.add(compsci);
-        studentList = new StudentList("StudentList");
+        studentList = new StudentList("Student");
         getCourses = new GetCourses();
 
     }
 
     public String requestRecommendation(String studentID, String semester) {
-        setCurrentStudent(studentID);
+
+        if (!setCurrentStudent(studentID)) {
+            return ("error");
+        }
         setCurrentDegree(currentStudent.getDegree());
         this.currentStudent = getCourses.execute(semester, this.currentStudent, this.currentDegree);
         return currentStudent.getRecommendedCourses();
     }
 
-    private void setCurrentStudent(String id) {
+    private boolean setCurrentStudent(String id) {
         for (int x = 0; x < studentList.getSize(); x = x + 1) {
+            java.lang.System.out.println(studentList.get(x).compare(id));
             if (studentList.get(x).compare(id)) {
-                currentDegree = degrees.get(x);
+                currentStudent = studentList.get(x);
+                return true;
             }
         }
+        return false;
     }
 
     private void setCurrentDegree(String name) {
@@ -41,4 +47,7 @@ public class System {
         }
     }
 
+    public Degree tess() {
+        return currentDegree;
+    }
 }
